@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="shortcut icon" type="image/x-icon" href="04f76696b55c45ed855a64af7a069a49.png" />
+    <style>
+        body {
+            background-color: #11171f;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #d99028;
+            margin-top: 0;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="email"],
+        input[type="tel"],
+        input[type="text"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #d99028;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffbf00;
+        }
+        .logo {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            max-width: 150px;
+        }
+        .container {
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 500px; /* Set a maximum width */
+    margin: 0 auto; /* Center the container */
+    overflow-x: auto;
+}
+
+/* Responsive styling for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%; /* Adjust the width for smaller screens */
+    }
+    table {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <br><br><br>
+    <div class="container">
+        <img class="logo" src="04f76696b55c45ed855a64af7a069a49.png" alt="Site Logo">
+        <h1>Sign Up</h1>
+        <form id="signup-form" action="signup-process.php" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="mobile">Mobile:</label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{14}" required><br>
+            
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="fname" required><br>
+            
+            <label for="middlename">Middle Name:</label>
+            <input type="text" id="middlename" name="mname" required><br>
+            
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lname" required><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" minlength="8" required><br>
+            
+            <label for="password-confirm">Confirm Password:</label>
+            <input type="password" id="password-confirm" name="password_confirm" minlength="8" required><br>
+            
+            <label>Date of Birth:</label>
+            <input type="number" id="dob-day" name="dob_day" placeholder="Day" min="1" max="31" required>
+            <input type="number" id="dob-month" name="dob_month" placeholder="Month" min="1" max="12" required>
+            <input type="number" id="dob-year" name="dob_year" placeholder="Year" min="1900" max="2023" required><br>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+</body>
+</html>
