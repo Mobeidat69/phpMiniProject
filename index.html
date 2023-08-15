@@ -53,7 +53,17 @@ table {
     margin-top: 20px;
     overflow-x: auto;
 }
-
+button {
+            background-color: #d99028;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffbf00;
+        }
 /* Add media queries for responsiveness */
 @media screen and (max-width: 600px) {
     .container {
@@ -69,13 +79,13 @@ table {
     <div class="container">
         <img src="04f76696b55c45ed855a64af7a069a49.png" alt="Site Logo">
         <h1>Welcome to Our Database!</h1>
-        <p>Access all of your personal Data from anywhere you want, <br> forgot your name or moblie number? <br> WE'VE GOT YOU!!
+        <p>Access all of your personal Data from anywhere you want, <br> forgot your name or mobile number? <br> WE'VE GOT YOU!!
         </p>
         
-        <p>If you already have an account, you can <a href="login.html">login here</a>.</p>
-        <p>If you're new here, you can <a href="signup.html">sign up here</a>.</p>
+        <p>If you already have an account  <a href="login.html"><button>Login</button></a></p>
+        <p>If you're new here  <a href="signup.html"><button>Sign Up</button></a></p>
         
-        <p>If you are an admin, you can <a href="admin-login.html">login as admin here</a>.</p>
+        <p>If you are an admin  <a href="admin-login.html"><button>Login As Admin</button></a></p>
     </div>
 </body>
 </html>

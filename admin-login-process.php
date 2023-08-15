@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$adminUsername = "1nn1@mail.com"; // Replace with your admin username
+$adminUsername = "admin@admin.com"; // Replace with your admin username
 $adminPassword = '$2y$10$IuAa8siFsdhFs6iAQQPr4OVSoumGy9QGhuIF0TbuU96h3AsN.5aU.'; // Replace with your admin password hash
 
 $username = $_POST['username'];

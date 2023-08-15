@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit();
 }
 
+$userFullName = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 $userEmail = $_SESSION['user_email'];
-$fullName = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 $userMobile = $_SESSION['user_mobile'];
 
 ?>
@@ -28,7 +27,7 @@ $userMobile = $_SESSION['user_mobile'];
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
         }
         .container {
             text-align: center;
@@ -36,7 +35,10 @@ $userMobile = $_SESSION['user_mobile'];
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            width: 400px;
+            width: 80%;
+            max-width: 500px; /* Set a maximum width */
+            margin: 0 auto; /* Center the container */
+            overflow-x: auto;
         }
         h1 {
             color: #d99028;
@@ -58,30 +60,51 @@ $userMobile = $_SESSION['user_mobile'];
             margin-top: 20px;
             max-width: 150px;
         }
-           /* Style for the Logout button */
-           .logout-btn {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #d99028;
+            color: #fff;
+        }
+        button {
             background-color: #d99028;
             color: #fff;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
-            text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
-        .logout-btn:hover {
+        button:hover {
             background-color: #ffbf00;
-            text-decoration: none;
+        }
+       
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%; /* Adjust the width for smaller screens */
+            }
+            table {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img class="logo" src="04f76696b55c45ed855a64af7a069a49.png" alt="Site Logo">
-        <h1>Welcome, <?php echo $fullName; ?>!</h1>
+        <h1>Welcome<br> <?php echo $userFullName; ?>!</h1>
         <p>Your email: <?php echo $userEmail; ?></p>
         <p>Your mobile: <?php echo $userMobile; ?></p>
         <p>This is your welcome page with your user data.</p>
-        <p><a href="logout.php" class="logout-btn">Log Out</a></p>    </div>
+        <a href="logout.php"><button>Logout</button></a></p>
+    </div>
 </body>
 </html>

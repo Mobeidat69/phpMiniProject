@@ -25,6 +25,7 @@ $result = $conn->query($sql);
 <head>
     <title>Admin Dashboard</title>
     <link rel="shortcut icon" type="image/x-icon" href="04f76696b55c45ed855a64af7a069a49.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             background-color: #11171f;
@@ -39,7 +40,6 @@ $result = $conn->query($sql);
             min-height: 100vh;
         }
         .container {
-            text-align: center;
             background-color: #f2f2f2;
             padding: 30px;
             border-radius: 10px;
@@ -94,28 +94,37 @@ $result = $conn->query($sql);
 <body>
     <div class="container">
         <img class="logo" src="04f76696b55c45ed855a64af7a069a49.png" alt="Site Logo">
-        <h1>Admin Dashboard</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Date Created</th>
-                <th>Last Login</th>
-            </tr>
-            <?php while ($row = $result->fetch_assoc()) { ?>
-            <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['fname'] . ' ' . $row['lname']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['password']; ?></td>
-                <td><?php echo $row['created_at']; ?></td>
-                <td><?php echo $row['last_login']; ?></td>
-            </tr>
-            <?php } ?>
+        <h1 class="text-center">Admin Dashboard</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Date Created</th>
+                    <th>Last Login</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['fname'] . ' ' . $row['lname']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['password']; ?></td>
+                    <td><?php echo $row['created_at']; ?></td>
+                    <td><?php echo $row['last_login']; ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
         </table>
-        <p><a href="logout.php">Logout</a></p>
+        <a href="logout.php" class="btn btn-primary">Log out</a>
     </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

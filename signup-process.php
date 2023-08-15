@@ -22,17 +22,37 @@ $dobDay = $_POST['dob_day'];
 $dobMonth = $_POST['dob_month'];
 $dobYear = $_POST['dob_year'];
 
-$sql = "INSERT INTO users (email, mobile, fname, lname, password, dob_day, dob_month, dob_year)
-        VALUES ('$email', '$mobile', '$fname', '$lname', '$password', '$dobDay', '$dobMonth', '$dobYear')";
+// Check if the email already exists in the database
+$checkEmailQuery = "SELECT email FROM users WHERE email = ?";
+$stmt = $conn->prepare($checkEmailQuery);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$checkEmailResult = $stmt->get_result();
 
-if ($conn->query($sql) === TRUE) {
+if ($checkEmailResult->num_rows > 0) {
+    echo "Error: Email already exists.";
+    $stmt->close();
+    $conn->close();
+    header("Location: login.html"); // Redirect to login page
+    exit();
+}
+
+// Insert new user data using prepared statement
+$insertQuery = "INSERT INTO users (email, mobile, fname, lname, password, dob_day, dob_month, dob_year)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($insertQuery);
+$stmt->bind_param("ssssssss", $email, $mobile, $fname, $lname, $password, $dobDay, $dobMonth, $dobYear);
+
+if ($stmt->execute()) {
+    $stmt->close();
     $conn->close();
     header("Location: login.html"); // Redirect to login page
     exit();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $stmt->error;
+    $stmt->close();
+    $conn->close();
     header("Location: login.html"); // Redirect to login page
-
+    exit();
 }
-$conn->close();
 ?>
